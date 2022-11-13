@@ -303,15 +303,6 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="ReportGeneratorMerged">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
@@ -326,6 +317,15 @@
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportGeneratorMerged">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -693,20 +693,29 @@
     <Reference Include="System.Xml.Serialization">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="PPv2URPConverters">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
@@ -714,20 +723,11 @@
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
         <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+        <HintPath>C:\Users\bonil\OneDrive\Documentos\GitHub\TecnicasyAlgoritmos3D\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -771,6 +771,14 @@
       <Project>{24e3473f-c935-d679-b903-30bfb6cc9916}</Project>
       <Name>Unity.VisualScripting.State.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{2da0594f-3171-433a-8b34-57adef55d691}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Searcher.Editor.csproj">
+      <Project>{e5271fc4-e6e7-c481-6135-6603b5da6f88}</Project>
+      <Name>Unity.Searcher.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
       <Project>{ee16ecff-b928-c3fe-e269-13d4b450f343}</Project>
       <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
@@ -791,10 +799,6 @@
       <Project>{1766e52f-079c-2a74-d49c-195aa9f6a992}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{595130ec-9d2d-319c-edbd-46c6b609a79b}</Project>
-      <Name>Unity.Services.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.csproj">
       <Project>{b79ac201-cb05-ff01-f20f-90a4f90d5841}</Project>
       <Name>Unity.VisualScripting.Core</Name>
@@ -803,9 +807,21 @@
       <Project>{02f667be-5e73-c286-c1b4-1eaa1bd82c63}</Project>
       <Name>Unity.EditorCoroutines.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{6083b364-067c-5fbd-807c-b0233595c628}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Services.Core.csproj">
+      <Project>{595130ec-9d2d-319c-edbd-46c6b609a79b}</Project>
+      <Name>Unity.Services.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{3c3a86d4-c4a1-bbb4-0545-b0de7d6d3d4b}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{860776cd-5692-36bb-1107-bdf9e1998450}</Project>
+      <Name>Unity.Burst</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
       <Project>{e1d926ef-e01d-1f05-d1a4-6dfc2b45322d}</Project>
@@ -819,6 +835,10 @@
       <Project>{3658d5f9-b4e8-756c-281d-4f2d828e632e}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{18c39fcf-9b4e-a08a-7390-3da721fc59ce}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.csproj">
       <Project>{e377a42e-f5ad-a21d-50eb-986b3a768079}</Project>
       <Name>Unity.TestTools.CodeCoverage.Editor</Name>
@@ -826,26 +846,6 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{68965225-9894-c802-5461-6b67f07ebe6b}</Project>
       <Name>Unity.VisualScripting.State</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Searcher.Editor.csproj">
-      <Project>{e5271fc4-e6e7-c481-6135-6603b5da6f88}</Project>
-      <Name>Unity.Searcher.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{18c39fcf-9b4e-a08a-7390-3da721fc59ce}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{6083b364-067c-5fbd-807c-b0233595c628}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{860776cd-5692-36bb-1107-bdf9e1998450}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{2da0594f-3171-433a-8b34-57adef55d691}</Project>
-      <Name>Unity.Burst.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

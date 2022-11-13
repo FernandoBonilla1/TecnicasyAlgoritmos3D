@@ -38,8 +38,8 @@
   <ItemGroup>
      <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\FunctionPointerInvokeTransform.cs" />
      <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\CecilExtensions.cs" />
-     <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\BurstILPostProcessor.cs" />
      <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\ILPostProcessing.cs" />
+     <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\BurstILPostProcessor.cs" />
      <Compile Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\AssemblyResolver.cs" />
      <None Include="Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.CodeGen.asmdef" />
     <Reference Include="UnityEngine">

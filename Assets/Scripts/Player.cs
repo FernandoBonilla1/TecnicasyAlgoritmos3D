@@ -12,12 +12,15 @@ public class Player : MonoBehaviour
     //Variable velocidad del jugador
     [SerializeField]
     private float speed = 0.1f;
-    
+    private Rigidbody rb;
+    private float RBForce = 250f;
     #endregion
+    [SerializeField] private bool isJumping = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class Player : MonoBehaviour
     {
     
         movimiento();
-
+        jump();
     }
 
     void movimiento(){
@@ -52,6 +55,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    void jump(){
+        if(Input.GetKeyDown(KeyCode.Space) && isJumping == false){
+            rb.AddForce(new Vector3(0f,RBForce,0f), ForceMode.Force);
+            isJumping = true;
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.CompareTag("Floor")){
+            isJumping = false;
+        }
+    }
 
 
 
