@@ -17,10 +17,17 @@ public class Player : MonoBehaviour
     #endregion
     [SerializeField] private bool isJumping = false;
     
+    //Variable que hace referencia al AudioSource
+    private AudioSource audioSource;
+    //Variable para almacenar sonido de salto
+    [SerializeField] private AudioClip jumpSound;
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        //Le asigno la referencia a la variable rb
         rb = GetComponent<Rigidbody>();
+        //Le asigno la referencia a la variable audiosource
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +66,10 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isJumping == false){
             rb.AddForce(new Vector3(0f,RBForce,0f), ForceMode.Force);
             isJumping = true;
+            //Se asigna el clip de jump
+            audioSource.clip = jumpSound;
+            //Se ejecuta el audio
+            audioSource.Play();
         }
     }
 
