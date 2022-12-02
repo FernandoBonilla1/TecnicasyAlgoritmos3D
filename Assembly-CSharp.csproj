@@ -36,6 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\LoadSaveData.cs" />
+     <Compile Include="Assets\PlayerPrefsEditor\SimpleEncryption.cs" />
+     <Compile Include="Assets\PlayerPrefsEditor\PlayerPrefsUtility.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\scrip.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
@@ -53,6 +56,7 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\PlayerPrefsEditor\README.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
