@@ -36,6 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\OmniSARTechnologies\Common\Helper\Editor\GUI\EditorGUIHelper.cs" />
+     <Compile Include="Assets\OmniSARTechnologies\LiteFPSCounter\Editor\Scripts\LiteFPSCounterEditor.cs" />
      <Compile Include="Assets\PlayerPrefsEditor\Editor\Mac\Plist.cs" />
      <Compile Include="Assets\PlayerPrefsEditor\Editor\PlayerPrefsEditor.cs" />
     <Reference Include="UnityEngine">

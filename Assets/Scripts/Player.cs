@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     [Header("Rotation")]
     [Tooltip("Sensibilidad del mouse al rotar la camara")]
-    [SerializeField] private float _rotationSensibility = 80f;
+    [SerializeField] private float _rotationSensibility = 120f;
 
     [Header("Jump")]
     [Tooltip("Variable para detectar cuando estoy en el suelo")]
