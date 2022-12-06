@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera _playerCamera;
 
     [Header("General")]
-    [SerializeField] private float _gravityScale = -20f;
+    [SerializeField] private float _gravityScale = -100f;
 
     [Header("Movent")]
     [Tooltip("Varaible de velocidad de movimiento")]
@@ -22,13 +22,13 @@ public class Player : MonoBehaviour
 
     [Header("Rotation")]
     [Tooltip("Sensibilidad del mouse al rotar la camara")]
-    [SerializeField] private float _rotationSensibility = 120f;
+    [SerializeField] private float _rotationSensibility = 150f;
 
     [Header("Jump")]
     [Tooltip("Variable para detectar cuando estoy en el suelo")]
     [SerializeField] private bool _isJumping = false;
     [Tooltip("Variable para usar fuerza en el salto")]
-    [SerializeField] private float _jumpForce = 2f;
+    [SerializeField] private float _jumpForce = 50f;
 
     [Header("Others")]
     [Tooltip("Variable puntaje")]
@@ -37,6 +37,10 @@ public class Player : MonoBehaviour
     [Header("Audios")]
     [Tooltip("Variable que almacena el sonido de salto")]
     [SerializeField] private AudioClip jumpSound;
+
+    [Header("Weapon")]
+    [SerializeField] private SimpleShoot _weapon;
+
     //Variable que hace referencia al Rigidbody
     private Rigidbody rb;
     //Variable que hace referencia al AudioSource
@@ -62,6 +66,12 @@ public class Player : MonoBehaviour
 
         //Le asignamos la referencia a la variable charactercontroller
         _characterController = GetComponent<CharacterController>();
+
+        //Anclamos el cursor en el videojuego
+        Cursor.lockState = CursorLockMode.Locked;
+
+        //Busco en la jerarquia algun elmento que tenga el simpleshot
+        _weapon = FindObjectOfType<SimpleShoot>();
 
     }
 
@@ -134,7 +144,12 @@ public class Player : MonoBehaviour
         _playerCamera.transform.localRotation = Quaternion.Euler(-_cameraVerticalAngle, 0f, 0f);
     }
 
-
+    public void OnTriggerEnter(Collider other){
+        if(other.gameObject.CompareTag("bulletbox")){
+            _weapon.SetBullets();
+            Destroy(other.gameObject);
+        }
+    }
 
 
 
