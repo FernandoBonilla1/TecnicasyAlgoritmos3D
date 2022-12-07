@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
@@ -17,14 +18,15 @@ public class SimpleShoot : MonoBehaviour
 
     [Header("Settings")]
     [Tooltip("Specify time to destory the casing object")][SerializeField] private float destroyTimer = 2f;
-    [Tooltip("Bullet Speed")][SerializeField] private float shotPower = 500f;
-    [Tooltip("Casing Ejection Speed")][SerializeField] private float ejectPower = 150f;
+    [Tooltip("Bullet Speed")][SerializeField] private float shotPower = 1500f;
+    [Tooltip("Casing Ejection Speed")][SerializeField] private float ejectPower = 800f;
 
     [Header("Sounds")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _fireGunSound;
 
     [Header("Bullets")]
+    [SerializeField] private TextMeshProUGUI _textBullets;
     [SerializeField][Range(0,100)] private int _cantBullet = 15;
 
 
@@ -35,6 +37,8 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+
+        _textBullets.text = _cantBullet.ToString();
     }
 
     void Update()
@@ -45,6 +49,8 @@ public class SimpleShoot : MonoBehaviour
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
         }
+
+        _textBullets.text = _cantBullet.ToString();
     }
 
 

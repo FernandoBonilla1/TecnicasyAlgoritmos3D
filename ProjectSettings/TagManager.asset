@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - bulletbox
+  - bell
+  - target
+  - bullet
   layers:
   - Default
   - TransparentFX

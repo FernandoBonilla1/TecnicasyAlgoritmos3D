@@ -19,4 +19,9 @@ public class Target : MonoBehaviour
             animator.SetTrigger("Fall");
         }
     }
+
+    public void DropTarget()
+    {
+        animator.SetTrigger("Fall");
+    }
 }

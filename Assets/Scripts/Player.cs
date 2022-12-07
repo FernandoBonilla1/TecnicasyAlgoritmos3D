@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-
+using TMPro;
 
 
 public class Player : MonoBehaviour
@@ -32,19 +32,30 @@ public class Player : MonoBehaviour
 
     [Header("Others")]
     [Tooltip("Variable puntaje")]
-    [SerializeField] private int points = 0;
+    [SerializeField] private int _points = 0;
+    [SerializeField] private TextMeshProUGUI _pointsText;
+    [SerializeField] private float _lastCall = 1.0f;
+    [SerializeField] private int _lastCallValue = 0;
 
     [Header("Audios")]
     [Tooltip("Variable que almacena el sonido de salto")]
-    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip _jumpSound;
+    [Tooltip("Variable que almacena el sonido de la campana")]
+    [SerializeField] private AudioClip _bellSound;
+    [SerializeField] private AudioClip _minigameMusic;
+    [SerializeField] private AudioSource _bgAudioSource;
 
     [Header("Weapon")]
     [SerializeField] private SimpleShoot _weapon;
 
+    [Header("Minigame")]
+    [SerializeField] private GameObject _feedbackCanvas;
+    private bool _canStart = false;
+
     //Variable que hace referencia al Rigidbody
-    private Rigidbody rb;
+    private Rigidbody _rb;
     //Variable que hace referencia al AudioSource
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
     //Variable de referencia al characterController
     private CharacterController _characterController;
@@ -60,9 +71,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         //Le asigno la referencia a la variable rb
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         //Le asigno la referencia a la variable audiosource
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
         //Le asignamos la referencia a la variable charactercontroller
         _characterController = GetComponent<CharacterController>();
@@ -79,12 +90,14 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        movement();
-        jump();
+        Movement();
         Look();
+        StartMinigame();
+
+        _pointsText.text = "Puntos: " + _points;
     }
 
-    void movement()
+    void Movement()
     {
         if (_characterController.isGrounded)
         {
@@ -103,20 +116,34 @@ public class Player : MonoBehaviour
                 //Multiplicamos el valor por la variable caminar
                 _moveInput = transform.TransformDirection(_moveInput) * _speed;
             }
+            Jump();
         }
 
-        _moveInput.y = _gravityScale * Time.deltaTime;
+        _moveInput.y += _gravityScale * Time.deltaTime;
         _characterController.Move(_moveInput * Time.deltaTime);
     }
 
-    void jump()
+    void Jump()
     {
 
         if (Input.GetButton("Jump"))
         {
             _moveInput.y = Mathf.Sqrt(_jumpForce * -2 * _gravityScale);
-            audioSource.clip = jumpSound;
-            audioSource.Play();
+            _audioSource.clip = _jumpSound;
+            _audioSource.Play();
+        }
+    }
+
+    public void SetPoints(int value)
+    {
+        //se calcula el tiempo desde la ultima llamada para evitar llamadas muy rápidas causadas por colisiones multiples de la bala (es decir, colisiones en distintos niveles del target)
+        //toma sólo el primer valor con el cual colisionó. Tiempo mínimo entre colisiones es mayor a 500ms
+        float callInstant = Time.time;
+        if(callInstant - _lastCall > 0.5f)
+        {
+            _lastCall = callInstant;
+            _lastCallValue = value;
+            _points = _points + value;
         }
     }
 
@@ -125,6 +152,17 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             //_isJumping = false;
+        }
+    }
+
+    public void StartMinigame()
+    {
+        if (_canStart && Input.GetKeyDown(KeyCode.E))
+        {
+            _audioSource.clip = _bellSound;
+            _audioSource.Play();
+            _bgAudioSource.clip = _minigameMusic;
+            _bgAudioSource.Play();
         }
     }
 
@@ -148,6 +186,21 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("bulletbox")){
             _weapon.SetBullets();
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("bell"))
+        {
+            _feedbackCanvas.SetActive(true);
+            _canStart = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("bell"))
+        {
+            _feedbackCanvas.SetActive(false);
+            _canStart = false;
         }
     }
 
