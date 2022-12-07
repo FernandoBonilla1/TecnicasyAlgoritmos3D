@@ -40,16 +40,21 @@ public class Player : MonoBehaviour
     [Header("Audios")]
     [Tooltip("Variable que almacena el sonido de salto")]
     [SerializeField] private AudioClip _jumpSound;
-    [Tooltip("Variable que almacena el sonido de la campana")]
-    [SerializeField] private AudioClip _bellSound;
-    [SerializeField] private AudioClip _minigameMusic;
-    [SerializeField] private AudioSource _bgAudioSource;
+    //[Tooltip("Variable que almacena el sonido de la campana")]
+    //[SerializeField] private AudioClip _bellSound;
+    [Tooltip("Variable que almacena el sonido de las cajas de balas")]
+    [SerializeField] private AudioClip _bulletsPickup;
+
+    //[Tooltip("Variable que almacena la musica del minijuego")]
+    //[SerializeField] private AudioClip _minigameMusic;
+    //[SerializeField] private AudioSource _bgAudioSource;
 
     [Header("Weapon")]
     [SerializeField] private SimpleShoot _weapon;
 
     [Header("Minigame")]
     [SerializeField] private GameObject _feedbackCanvas;
+    [SerializeField] private MinigameManager _minigameManager;
     private bool _canStart = false;
 
     //Variable que hace referencia al Rigidbody
@@ -93,8 +98,6 @@ public class Player : MonoBehaviour
         Movement();
         Look();
         StartMinigame();
-
-        _pointsText.text = "Puntos: " + _points;
     }
 
     void Movement()
@@ -144,6 +147,7 @@ public class Player : MonoBehaviour
             _lastCall = callInstant;
             _lastCallValue = value;
             _points = _points + value;
+            _minigameManager.SetPoints(_points);
         }
     }
 
@@ -159,10 +163,13 @@ public class Player : MonoBehaviour
     {
         if (_canStart && Input.GetKeyDown(KeyCode.E))
         {
-            _audioSource.clip = _bellSound;
-            _audioSource.Play();
-            _bgAudioSource.clip = _minigameMusic;
-            _bgAudioSource.Play();
+            //_audioSource.clip = _bellSound;
+            //_audioSource.Play();
+            //_bgAudioSource.clip = _minigameMusic;
+            //_bgAudioSource.Play();
+            _points = 0;
+            _minigameManager.SetPoints(0);
+            _minigameManager.StartMinigame();
         }
     }
 
@@ -186,6 +193,8 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("bulletbox")){
             _weapon.SetBullets();
             Destroy(other.gameObject);
+            _audioSource.clip = _bulletsPickup;
+            _audioSource.Play();
         }
 
         if (other.gameObject.CompareTag("bell"))
