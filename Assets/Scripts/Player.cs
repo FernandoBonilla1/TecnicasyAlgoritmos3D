@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _feedbackCanvas;
     [SerializeField] private MinigameManager _minigameManager;
     private bool _canStart = false;
+    private bool _minigameStatus = false;
 
     //Variable que hace referencia al Rigidbody
     private Rigidbody _rb;
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _minigameStatus = _minigameManager.getStatusMinigame();
         //Le asigno la referencia a la variable rb
         _rb = GetComponent<Rigidbody>();
         //Le asigno la referencia a la variable audiosource
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        _minigameStatus = _minigameManager.getStatusMinigame();
         Movement();
         Look();
         StartMinigame();
@@ -161,12 +163,9 @@ public class Player : MonoBehaviour
 
     public void StartMinigame()
     {
-        if (_canStart && Input.GetKeyDown(KeyCode.E))
+        if (_canStart && Input.GetKeyDown(KeyCode.E) && !_minigameStatus)
         {
-            //_audioSource.clip = _bellSound;
-            //_audioSource.Play();
-            //_bgAudioSource.clip = _minigameMusic;
-            //_bgAudioSource.Play();
+            _feedbackCanvas.SetActive(false);
             _points = 0;
             _minigameManager.SetPoints(0);
             _minigameManager.StartMinigame();
@@ -199,8 +198,11 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("bell"))
         {
-            _feedbackCanvas.SetActive(true);
-            _canStart = true;
+            if (!_minigameStatus)
+            {
+                _feedbackCanvas.SetActive(true);
+                _canStart = true;
+            }
         }
     }
 

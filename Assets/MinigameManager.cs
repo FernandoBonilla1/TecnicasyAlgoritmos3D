@@ -10,11 +10,13 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSourceMusic;   
     [SerializeField] private AudioClip _bellSound;
     [SerializeField] private AudioClip _minigameMusic;
+    [SerializeField] private AudioClip _idleMusic;
 
     [SerializeField] private List<GameObject> _targets;
     [SerializeField] private TextMeshProUGUI _pointsText;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _maxPointsText;
+    [SerializeField] private TextMeshProUGUI _minigameResults;
     [SerializeField] private int _points = 0;
     [SerializeField] private int _maxPoints = 0;
 
@@ -25,9 +27,12 @@ public class MinigameManager : MonoBehaviour
 
     public void StartMinigame()
     {
+        _isMinigameActive = true;
+        _minigameResults.gameObject.SetActive(false);
         _timer = _maxTimer;
         _pointsText.text = "Puntos: " + _points;
-        _maxPoints = PlayerPrefs.GetInt("MaxPoints");
+        //obtiene puntos maximos del player prefs. Si no existe, retorna 0.
+        _maxPoints = PlayerPrefs.GetInt("MaxPoints", 0);
         _maxPointsText.text = "Max Puntos: " + _maxPoints;
         _audioSourceSounds.clip = _bellSound;
         _audioSourceSounds.Play();
@@ -37,7 +42,6 @@ public class MinigameManager : MonoBehaviour
         _maxPointsText.gameObject.SetActive(true);
         _pointsText.gameObject.SetActive(true);
         _timerText.gameObject.SetActive(true);
-        _isMinigameActive = true;
     }
 
     private void Update()
@@ -48,7 +52,7 @@ public class MinigameManager : MonoBehaviour
             TimerCount();
             if (_randomNumber > -1 && _isMinigameActive)
             {
-                if (!_targets[_randomNumber].activeSelf)
+                if (_targets[_randomNumber].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FallTarget"))
                 {
                     RiseRandomTargets();
                 }
@@ -59,7 +63,7 @@ public class MinigameManager : MonoBehaviour
     private void RiseRandomTargets()
     {
         _randomNumber = Random.Range(0, _targets.Count);
-        _targets[_randomNumber].SetActive(true);
+        _targets[_randomNumber].GetComponent<Target>().RiseTarget();
     }
 
     private void TimerCount()
@@ -77,12 +81,23 @@ public class MinigameManager : MonoBehaviour
     public void FinishMinigame()
     {
         _isMinigameActive = false;
+        _maxPointsText.gameObject.SetActive(false);
+        _pointsText.gameObject.SetActive(false);
+        _timerText.gameObject.SetActive(false);
+        _audioSourceMusic.clip = _idleMusic;
+        _audioSourceMusic.Play();
+
         int auxMaxPoints = _points;
         if(auxMaxPoints > _maxPoints)
         {
             _maxPoints = auxMaxPoints;
             _maxPointsText.text = "Max Puntos: " + _maxPoints;
             PlayerPrefs.SetInt("MaxPoints", _points);
+            StartCoroutine(MessageDelay());
+        }
+        else
+        {
+            StartCoroutine(MessageDelay());
         }
     }
 
@@ -90,7 +105,10 @@ public class MinigameManager : MonoBehaviour
     {
         for(int i=0; i<_targets.Count; i++)
         {
-            _targets[i].SetActive(false);
+            if (_targets[i].GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("RiseTarget"))
+            {
+                _targets[_randomNumber].GetComponent<Target>().DropTarget();
+            }
         }
     }
 
@@ -102,5 +120,13 @@ public class MinigameManager : MonoBehaviour
     public bool getStatusMinigame()
     {
         return _isMinigameActive;
+    }
+
+    IEnumerator MessageDelay()
+    {
+        _minigameResults.text = "Puntos Obtenidos: " + _points + "\r\n" + "Máximo Puntaje: " + _maxPoints;
+        _minigameResults.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5);
+        _minigameResults.gameObject.SetActive(false);
     }
 }

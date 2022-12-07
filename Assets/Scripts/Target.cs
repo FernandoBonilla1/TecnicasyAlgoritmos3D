@@ -6,37 +6,24 @@ public class Target : MonoBehaviour
 {
     //Variable de tipo animator
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject _colliders;
 
     private float _disableDelay = 0.5f; 
 
     private void Awake(){
+        _colliders.SetActive(false);
         animator = GetComponent<Animator>();
-    }
-
-    private void OnEnable()
-    {
-        animator.SetTrigger("Rise");
-    }
-
-    private void Update(){
-        //if(Input.GetKeyDown(KeyCode.E)){
-        //    //animator.SetTrigger("Rise");
-        //    _minigameManager.RiseRandomTargets();
-        //}
-        //if(Input.GetKeyDown(KeyCode.R)){
-        //    animator.SetTrigger("Fall");
-        //}
     }
 
     public void DropTarget()
     {
-        animator = GetComponent<Animator>();
         animator.SetTrigger("Fall");
-        Invoke("DisableTarget", _disableDelay);
+        _colliders.SetActive(false);
     }
 
-    private void DisableTarget()
+    public void RiseTarget()
     {
-        gameObject.SetActive(false);
+        _colliders.SetActive(true);
+        animator.SetTrigger("Rise");
     }
 }

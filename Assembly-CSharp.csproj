@@ -71,8 +71,8 @@
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Nokobot\Modern Guns - Handgun\_Demo Assets\SimpleShoot.cs" />
     <Compile Include="Assets\BulletCollision.cs" />
-    <Compile Include="Assets\OmniSARTechnologies\LiteFPSCounter\Demo\Scripts\HeavyRenderingController.cs" />
     <Compile Include="Assets\MinigameManager.cs" />
+    <Compile Include="Assets\OmniSARTechnologies\LiteFPSCounter\Demo\Scripts\HeavyRenderingController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
